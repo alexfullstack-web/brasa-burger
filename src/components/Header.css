@@ -1,0 +1,208 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  transition: background-color 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
+}
+
+.header--scrolled,
+.header--open {
+  background: rgba(11, 9, 8, 0.72);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: 0 1px 0 var(--line), 0 10px 30px -18px rgba(0, 0, 0, 0.8);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: var(--header-h);
+  transition: height 0.35s ease;
+}
+
+.header--scrolled .header__inner {
+  height: calc(var(--header-h) - 10px);
+}
+
+.header__logo {
+  flex-shrink: 0;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__cart {
+  position: relative;
+}
+
+.header__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  animation: badge-pop 0.45s var(--ease-spring);
+}
+
+@keyframes badge-pop {
+  0% { transform: scale(0.4); }
+  60% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.header__cta {
+  display: none;
+}
+
+/* ── Menu mobile ── */
+.header__nav {
+  position: fixed;
+  inset: var(--header-h) 0 0;
+  height: calc(100dvh - var(--header-h));
+  background: var(--bg);
+  padding: 32px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.header--scrolled .header__nav {
+  inset: calc(var(--header-h) - 10px) 0 0;
+}
+
+.header__nav.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.header__nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.header__nav li {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.header__nav.is-open li {
+  animation: nav-in 0.45s var(--ease-out) both;
+  animation-delay: calc(var(--i) * 60ms + 80ms);
+}
+
+@keyframes nav-in {
+  to { opacity: 1; transform: none; }
+}
+
+.header__nav a:not(.btn) {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 9vw, 2.6rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 6px 0;
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+.header__nav a:not(.btn):hover {
+  color: var(--accent-2);
+}
+
+.header__nav-cta {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .header__cta {
+    display: inline-flex;
+  }
+  .header__nav-cta {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header__toggle {
+    display: none;
+  }
+
+  .header__nav {
+    position: static;
+    height: auto;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    flex-direction: row;
+  }
+
+  .header__nav ul {
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  .header__nav li,
+  .header__nav.is-open li {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .header__nav a:not(.btn) {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    padding: 10px 14px;
+    color: var(--muted);
+    position: relative;
+  }
+
+  .header__nav a:not(.btn)::after {
+    content: '';
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 4px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s var(--ease-out);
+  }
+
+  .header__nav a:not(.btn):hover {
+    color: var(--text);
+  }
+
+  .header__nav a:not(.btn):hover::after {
+    transform: scaleX(1);
+  }
+}

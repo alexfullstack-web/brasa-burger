@@ -1,0 +1,39 @@
+.carousel__viewport {
+  overflow: hidden;
+  margin: -24px -10px;
+  padding: 24px 0;
+  touch-action: pan-y;
+}
+
+.carousel__track {
+  list-style: none;
+  display: flex;
+  transition: transform 0.75s var(--ease-in-out);
+  will-change: transform;
+}
+
+.carousel__slide {
+  flex: 0 0 calc(100% / var(--per-view));
+  min-width: 0;
+  padding: 0 10px;
+  opacity: 0.35;
+  transform: scale(0.96);
+  transition: opacity 0.6s ease, transform 0.6s var(--ease-out);
+}
+
+.carousel__slide.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.carousel__slide > * {
+  height: 100%;
+}
+
+.carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 32px;
+}

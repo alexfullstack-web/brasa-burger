@@ -1,0 +1,129 @@
+.popular {
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(255, 77, 28, 0.08), transparent 70%),
+    var(--bg-2);
+}
+
+.popular__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+}
+
+.popular__card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  overflow: hidden;
+  transition: border-color 0.4s ease, background-color 0.4s ease, transform 0.45s var(--ease-out);
+}
+
+.popular__card:hover {
+  border-color: rgba(244, 181, 68, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-4px);
+}
+
+.popular__rank {
+  position: absolute;
+  right: 14px;
+  bottom: -18px;
+  font-family: var(--font-display);
+  font-size: 6rem;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+
+.popular__media {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.04), 0 18px 30px -14px rgba(0, 0, 0, 0.9);
+}
+
+.popular__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.popular__card:hover .popular__media img {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.popular__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+  position: relative;
+}
+
+.popular__name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  line-height: 1.05;
+  margin-top: 4px;
+}
+
+.popular__desc {
+  color: var(--muted);
+  font-size: 0.86rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.popular__footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-top: 6px;
+}
+
+.popular__price {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.45rem;
+  color: var(--gold);
+}
+
+@media (min-width: 768px) {
+  .popular__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .popular__card {
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 22px;
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .popular__card {
+    grid-template-columns: 210px minmax(0, 1fr);
+    padding: 24px 28px 24px 24px;
+  }
+
+  .popular__name {
+    font-size: 1.85rem;
+  }
+}

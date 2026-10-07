@@ -1,0 +1,117 @@
+.about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.about__media {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  max-height: 640px;
+  box-shadow: var(--shadow-card);
+}
+
+.about__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.12);
+  transition: transform 1.6s var(--ease-out);
+}
+
+.about__media.is-visible img {
+  transform: scale(1);
+}
+
+.about__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(11, 9, 8, 0.75));
+}
+
+.about__tag {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: rgba(11, 9, 8, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text);
+}
+
+.about__tag svg {
+  color: var(--accent-2);
+}
+
+.about__title {
+  margin: 12px 0 18px;
+}
+
+.about__lead {
+  max-width: 48ch;
+}
+
+.about__features {
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.about__features li {
+  display: flex;
+  gap: 16px;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+}
+
+.about__num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--accent-2);
+  line-height: 1;
+}
+
+.about__features h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.about__features p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (min-width: 640px) {
+  .about__features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .about__grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 72px;
+  }
+
+  .about__media {
+    aspect-ratio: 4 / 5;
+  }
+}

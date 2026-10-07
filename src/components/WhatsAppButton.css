@@ -1,0 +1,69 @@
+.wa-float {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: wa-in 0.6s 1.2s var(--ease-spring) both;
+}
+
+.wa-float__btn {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: #25d366;
+  box-shadow: 0 12px 28px -8px rgba(37, 211, 102, 0.6), 0 4px 10px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.wa-float__btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid #25d366;
+  animation: wa-ring 2.4s ease-out infinite;
+}
+
+.wa-float:hover .wa-float__btn {
+  transform: scale(1.08);
+}
+
+.wa-float__tip {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(11, 9, 8, 0.85);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .wa-float:hover .wa-float__tip {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes wa-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes wa-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.6); }
+  to { opacity: 1; transform: none; }
+}

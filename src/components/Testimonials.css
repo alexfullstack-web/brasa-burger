@@ -1,0 +1,73 @@
+.testimonials {
+  background: var(--bg-2);
+}
+
+.tcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  padding: 30px 26px 24px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.tcard__quote {
+  position: absolute;
+  top: -26px;
+  right: 16px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 9rem;
+  line-height: 1;
+  color: rgba(255, 77, 28, 0.12);
+  pointer-events: none;
+}
+
+.tcard__stars {
+  display: flex;
+  gap: 3px;
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.tcard__stars .is-on {
+  color: var(--gold);
+}
+
+.tcard__text {
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.tcard__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.tcard__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  color: #1a0d06;
+}
+
+.tcard__author strong {
+  display: block;
+  font-size: 0.92rem;
+}
+
+.tcard__author small {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
